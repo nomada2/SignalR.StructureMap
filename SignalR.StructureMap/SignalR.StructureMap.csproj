@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\SignalR.StructureMap.nuspec" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
