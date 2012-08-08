@@ -10,6 +10,7 @@
     <description>$description$</description>
     <dependencies>
         <dependency id="SignalR.Server" version="0.4" />
+        <dependency id="StructureMap" version="2.6.0" />
     </dependencies>
   </metadata>
 </package>
