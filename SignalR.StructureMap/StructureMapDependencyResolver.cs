@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using StructureMap;
+using System.Linq;
 using SignalR.Infrastructure;
+using StructureMap;
 
-namespace SignalR.Ninject 
+namespace SignalR.StructureMap 
 {
     public class StructureMapDependencyResolver : DefaultDependencyResolver
     {
@@ -21,12 +22,14 @@ namespace SignalR.Ninject
 
         public override object GetService(Type serviceType) 
         {
-            return _container.GetInstance(serviceType) ?? base.GetService(serviceType);
+            return !serviceType.IsAbstract && !serviceType.IsInterface && serviceType.IsClass
+                               ? _container.GetInstance(serviceType)
+                               : (_container.TryGetInstance(serviceType) ?? base.GetService(serviceType));
         }
 
         public override IEnumerable<object> GetServices(Type serviceType) 
         {
-            return _container.GetAllInstances(serviceType).Concat(base.GetServices(serviceType));
+            return _container.GetAllInstances(serviceType).Cast<object>().Concat(base.GetServices(serviceType));
         }
     }
 }
