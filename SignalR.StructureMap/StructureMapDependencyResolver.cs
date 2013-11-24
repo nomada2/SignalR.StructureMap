@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SignalR.Infrastructure;
+using SignalR;
 using StructureMap;
 
 namespace SignalR.StructureMap 
